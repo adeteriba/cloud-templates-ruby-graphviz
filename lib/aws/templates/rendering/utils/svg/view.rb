@@ -21,7 +21,9 @@ module Aws
               end
             end
 
-            def html_parameters; end
+            def html_parameters
+              { is_compact: parent.is_compact }
+            end
 
             def html
               @html ||= Svg::Html::Render.new(html_parameters)
@@ -49,6 +51,7 @@ module Aws
             def create_graph
               graph = GV::Graph.open('g', :directed, :strict)
               graph[:splines] = 'ortho'
+              graph[:bgcolor] = 'oldlace'
               graph
             end
           end

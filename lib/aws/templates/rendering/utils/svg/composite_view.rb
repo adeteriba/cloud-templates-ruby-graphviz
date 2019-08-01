@@ -7,14 +7,14 @@ module Aws
       module Utils
         module Svg
           #
-          # Comopsite View
+          # Composite view
           class CompositeView < View
             using Templates::Utils::Dependency::Refinements
 
             for_entity Aws::Templates::Composite
 
             def html_parameters
-              { transparent: true }
+              super.merge(transparent: true)
             end
 
             def to_processed
@@ -42,6 +42,8 @@ module Aws
             end
 
             def subgraph
+              return graph if parent.hide_composites
+
               @subgraph ||= graph.sub_graph(
                 "cluster_#{name}",
                 label: graph.html(html.format(instance)),

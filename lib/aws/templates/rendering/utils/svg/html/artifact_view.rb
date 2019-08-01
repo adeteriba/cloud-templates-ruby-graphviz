@@ -12,12 +12,15 @@ module Aws
             class ArtifactView < Html::ParameterizedView
               for_entity Aws::Templates::Artifact
 
-              COMPACT_VIEW_FIELDS = %w[label parent path].to_set.freeze
-
               protected
 
-              def mapper(name, value)
-                super if !parent.is_compact || COMPACT_VIEW_FIELDS.include?(name.to_s)
+              def enumerator
+                return super unless parent.is_compact
+
+                {
+                  type: instance.class.to_s,
+                  label: instance.label
+                }
               end
             end
           end

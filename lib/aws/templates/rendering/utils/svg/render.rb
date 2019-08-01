@@ -19,6 +19,10 @@ module Aws
                       description: 'Compact display mode',
                       transform: as_boolean
 
+            parameter :hide_composites,
+                      description: 'Plot clusters for composites',
+                      transform: as_boolean
+
             protected
 
             def post_process(rendered)

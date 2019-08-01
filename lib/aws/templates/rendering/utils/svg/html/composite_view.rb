@@ -9,7 +9,7 @@ module Aws
           module Html
             #
             # Composite View
-            class CompositeView < Html::ParameterizedView
+            class CompositeView < Html::ArtifactView
               for_entity Aws::Templates::Composite
             end
           end
