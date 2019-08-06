@@ -9,7 +9,7 @@ module Aws
             #
             # Default View
             class DefaultView < Html::View
-              for_entity ::Object
+              for_entity ::BasicObject
 
               def glyph
                 "\u2218"

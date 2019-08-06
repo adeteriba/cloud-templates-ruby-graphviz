@@ -21,7 +21,9 @@ module Aws
               end
             end
 
-            def html_parameters; end
+            def html_parameters
+              { is_compact: parent.is_compact }
+            end
 
             def html
               @html ||= Svg::Html::Render.new(html_parameters)

@@ -12,10 +12,6 @@ module Aws
             using Templates::Utils::Dependency::Refinements
             for_entity Aws::Templates::Artifact
 
-            def html_parameters
-              { is_compact: parent.is_compact }
-            end
-
             def to_processed
               graph_node
             end
@@ -27,7 +23,8 @@ module Aws
                   graph_node,
                   h.to_processed,
                   style: 'bold', penwidth: 5, color: 'transparent',
-                  id: "#{name}@#{h.name}"
+                  id: "#{name}@#{h.name}",
+                  constraint: false
                 )
               end
             end

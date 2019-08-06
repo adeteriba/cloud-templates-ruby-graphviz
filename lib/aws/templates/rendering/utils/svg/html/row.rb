@@ -6,6 +6,7 @@ module Aws
       module Utils
         module Svg
           module Html
+            #
             # Row
             class Row < Html::Render
               attr_reader :content
