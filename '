@@ -6,7 +6,7 @@ require 'yard'
 
 desc 'Generate documentation'
 Eslintrb::EslintTask.new :eslint do |t|
-  t.pattern = 'lib/**/*.js'
+  t.pattern = 'javascript/**/*.js'
   t.options = :defaults
 end
 
@@ -29,4 +29,4 @@ RSpec::Core::RakeTask.new(:test) do |task|
   task.pattern = '{spec/}**{,/*/**}/*_spec.rb'
 end
 
-task default: [:test, :lint, :eslint, :doc]
+task default: [:test, :lint, :doc]

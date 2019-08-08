@@ -30,15 +30,16 @@ module Aws
             end
 
             def formatted_for(graph)
-              template = ERB.new(
-                File.open(
-                  File.expand_path(
-                    File.join(__dir__, 'erb', 'template.html.erb')
-                  )
-                ).read
-              )
+              template = ERB.new(load_asset('template.html.erb'))
               image = graph.render 'svg'
+              javascript = load_asset('javascript.js')
               template.result(binding)
+            end
+
+            def load_asset(name)
+              File.open(
+                File.expand_path(File.join(__dir__, 'erb', name))
+              ).read
             end
           end
         end
