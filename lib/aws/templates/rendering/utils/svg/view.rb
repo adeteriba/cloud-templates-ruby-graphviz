@@ -33,7 +33,7 @@ module Aws
               hsh = {
                 shape: 'rect',
                 label: graph.html(html.format(instance)),
-                style: 'bold, filled, rounded', fillcolor: 'oldlace',
+                style: 'bold, filled, rounded', fillcolor: 'seashell',
                 id: name
               }
 

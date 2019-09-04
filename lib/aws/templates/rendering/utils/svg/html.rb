@@ -14,7 +14,7 @@ module Aws
       module Utils
         module Svg
           #
-          # HTML
+          # Html
           module Html
             def self.tag(name, parameters, content)
               %(<#{name} #{tag_parameters(parameters)}>#{content}</#{name}>)

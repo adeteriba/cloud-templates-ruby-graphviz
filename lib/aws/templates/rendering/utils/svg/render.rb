@@ -1,5 +1,6 @@
 require 'aws/templates/utils'
 require 'erb'
+require 'nokogiri'
 
 module Aws
   module Templates
@@ -31,8 +32,13 @@ module Aws
 
             def formatted_for(graph)
               template = ERB.new(load_asset('template.html.erb'))
-              image = graph.render 'svg'
               javascript = load_asset('javascript.js')
+              css = load_asset('jquery-ui.css')
+              image = graph.render 'svg'
+              id = Nokogiri::XML(image)
+              tag = id.at_xpath '//xmlns:svg'
+              tag['id'] = 'svg-id'
+              svg = id.to_xml
               template.result(binding)
             end
 

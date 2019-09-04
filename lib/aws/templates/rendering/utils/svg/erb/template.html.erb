@@ -1,73 +1,156 @@
 <%#-*- coding: UTF-8 -*-%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script>
-  <%= javascript %>  	
-</script>
 
-<style>
-path {
-    cursor: pointer;
-}
+  <head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="https://ariutta.github.io/svg-pan-zoom/dist/svg-pan-zoom.js"></script>
+    <script>
+      <%= javascript %>
+    </script>
+    <style>
+      <%= css %>
+      path {
+        cursor: pointer
+      }
 
-.selected {
-    stroke: yellow;
-    stroke-width: 8;
-    stroke-linejoin: round;
-}
+      .selected {
+        stroke: yellow;
+        stroke-width: 8;
+        stroke-linejoin: round;
+      }
 
-polygon {
-    cursor: pointer;
-}
+      polygon {
+        cursor: pointer;
+      }
 
-.row {
-    fill: lightcoral;
-    stroke: coral;
-    stroke-linejoin: round;
-}
+      .row {
+        fill: lightcoral;
+        stroke: coral;
+        stroke-linejoin: round;
+      }
 
-.fade-away {
-    transition: all .3s  ease-in-out; /* Animation */
-    opacity: 0.3;
-    z-index: -20;
-    transform-origin: center center;
-    transform: scale(0.99);
-}
+      .fade-away {
+        transition: all .3s ease-in-out;
+        opacity: 0.3;
+        z-index: -20;
+        transform-origin: center center;
+        transform: scale(0.99);
+      }
 
-.fade-back {
-    transition: all .1s  ease-in-out; /* Animation */
-    opacity: 1;
-    z-index: 20;
-    transform-origin: center center;
-    transform: scale(1);
-}
+      .fade-back {
+        transition: all .1s ease-in-out;
+        opacity: 1;
+        z-index: 20;
+        transform-origin: center center;
+        transform: scale(1);
+      }
 
-.edge-hidden {
-    transition: all .3s  ease-in-out; /* Animation */
-    z-index: -20;
-    opacity: 0;
-}
+      .edge-hidden {
+        transition: all .3s ease-in-out;
+        z-index: -20;
+        opacity: 0;
+      }
 
-.edge-showed {
-    transition: all .1s  ease-in-out; /* Animation */
-    z-index: 20;
-    opacity: 1;
-}
+      .edge-showed {
+        transition: all .1s ease-in-out;
+        z-index: 20;
+        opacity: 1;
+      }
 
-.edge-showed * {
-    stroke: black;
-}
+      .edge-showed * {
+        stroke: black;
+      }
 
-.edge-showed polygon {
-	fill: black;
-}
-</style>
-</head>
-<body>
-    <%= image %>
-</body>
+      .edge-showed polygon {
+        fill: black;
+      }
+
+      h1 {
+        font-family: Courier, monospace;
+        text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #49ff18, 0 0 30px purple, 0 0 40px navy, 0 0 55px navy, 0 0 75px navy, 0px 0px 20px navy;
+      }
+
+      input[type=text] {
+        width: 250px;
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+        background-color: white;
+        background-position: 10px 10px;
+        background-repeat: no-repeat;
+        padding: 12px 20px 12px 40px;
+      }
+
+      .ui-autocomplete {
+        background: snow;
+        font-family: Courier;
+        font-size: 20px;
+        position: fixed;
+      }
+
+      .myButton {
+        -moz-box-shadow: 3px 4px 0px 0px #8a2a21;
+        -webkit-box-shadow: 3px 4px 0px 0px #8a2a21;
+        box-shadow: 3px 4px 0px 0px #8a2a21;
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #c62d1f), color-stop(1, #f24437));
+        background: -moz-linear-gradient(top, #c62d1f 5%, #f24437 100%);
+        background: -webkit-linear-gradient(top, #c62d1f 5%, #f24437 100%);
+        background: -o-linear-gradient(top, #c62d1f 5%, #f24437 100%);
+        background: -ms-linear-gradient(top, #c62d1f 5%, #f24437 100%);
+        background: linear-gradient(to bottom, #c62d1f 5%, #f24437 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#c62d1f', endColorstr='#f24437', GradientType=0);
+        background-color: #c62d1f;
+        -moz-border-radius: 18px;
+        -webkit-border-radius: 18px;
+        border-radius: 18px;
+        border: 1px solid #d02718;
+        display: inline-block;
+        cursor: pointer;
+        color: #ffffff;
+        font-family: Arial;
+        font-size: 17px;
+        padding: 7px 25px;
+        text-decoration: none;
+        text-shadow: 0px 1px 0px #810e05;
+      }
+
+      .myButton:hover {
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #f24437), color-stop(1, #c62d1f));
+        background: -moz-linear-gradient(top, #f24437 5%, #c62d1f 100%);
+        background: -webkit-linear-gradient(top, #f24437 5%, #c62d1f 100%);
+        background: -o-linear-gradient(top, #f24437 5%, #c62d1f 100%);
+        background: -ms-linear-gradient(top, #f24437 5%, #c62d1f 100%);
+        background: linear-gradient(to bottom, #f24437 5%, #c62d1f 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f24437', endColorstr='#c62d1f', GradientType=0);
+        background-color: #f24437;
+      }
+
+      .myButton:active {
+        position: relative;
+        top: 1px;
+      }
+
+      div {
+        position: fixed;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Node Search</h1>
+    <div class="container">
+      <input id="tags" type="text" class="live-search-box" placeholder="Search .." />
+      <button class="myButton" id="zoomin">Zoom in</button>
+      <button class="myButton" id="zoomout">Zoom out</button>
+      <button class="myButton" id="reset">Reset</button>
+    </div>
+    <br>
+    <br>
+    <br>
+    <%= svg %>
+  </body>
+
 </html>
-

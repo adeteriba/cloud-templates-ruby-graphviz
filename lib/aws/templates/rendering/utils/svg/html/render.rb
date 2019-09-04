@@ -12,7 +12,7 @@ module Aws
             class Render < Aws::Templates::Rendering::Render
               include Aws::Templates::Utils::Parametrized
 
-              default background_color: proc { transparent ? 'transparent' : 'oldlace' }
+              default background_color: proc { transparent ? 'transparent' : 'seashell' }
 
               def self.getter
                 as_is
